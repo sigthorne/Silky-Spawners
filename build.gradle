@@ -1,5 +1,5 @@
 plugins {
-	id "fabric-loom" version "0.4-SNAPSHOT"
+	id "fabric-loom" version "0.5-SNAPSHOT"
     id "maven-publish"
 }
 
@@ -38,7 +38,9 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     apiModules.each { module -> modApi include(fabricApi.module(module, project.fabric_version)) }
 
-    modRuntime "io.github.prospector:modmenu:${project.mod_menu_version}"
+    modRuntime("io.github.prospector:modmenu:${project.mod_menu_version}") { 
+		transitive(false) 
+	}
 }
 
 processResources {
